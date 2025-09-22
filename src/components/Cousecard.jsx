@@ -8,7 +8,7 @@ const Coursecard = ({ name }) => {
         <img
           src={CourseIcon}
           alt="Course Icon"
-          className="w-10 h-10 md:w-12 md:h-12 object-contain"
+          className="w-7 h-7 md:w-8 md:h-8 object-contain"
         />
       </div>
 

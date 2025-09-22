@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Logo from "./assets/Group2827.svg";
 
 const MenuSvg = ({ className = "w-6 h-6" }) => (
@@ -44,15 +45,20 @@ const Header = () => {
             </p>
           </Link>
 
-          <p
-            className="hidden md:block font-poppins text-gray-700 hover:text-black cursor-pointer"
-            onClick={() => {
-              const coursesSection = document.getElementById("courses");
-              coursesSection?.scrollIntoView({ behavior: "smooth" });
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           >
-            Courses
-          </p>
+            <Link
+              to="/allcourses"
+              className="relative group inline-block font-poppins text-gray-800 hover:text-gray-900 transition-colors duration-200"
+            >
+              Courses
+              <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-gray-900 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 rounded-full"></span>
+            </Link>
+          </motion.div>
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -82,9 +88,13 @@ const Header = () => {
       </div>
 
       {isOpen && (
-        <div
+        <motion.div
           id="mobile-menu"
           className="md:hidden mt-2 bg-white shadow-lg rounded-md py-4 flex flex-col items-center space-y-3"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
         >
           <Link
             to="/login"
@@ -100,7 +110,7 @@ const Header = () => {
           >
             Sign Up
           </Link>
-        </div>
+        </motion.div>
       )}
     </header>
   );

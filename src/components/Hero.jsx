@@ -29,7 +29,13 @@ const Hero = () => {
             your journey with hands-on experiences and expert guidance.
           </p>
 
-          <button className="bg-[#C2F578] hover:bg-lime-500 px-6 py-3 rounded-md font-semibold transition">
+          <button
+            className="hidden md:block font-poppins text-gray-700 hover:text-black cursor-pointer bg-[#C2F578] hover:bg-lime-500 px-6 py-3 rounded-md font-semibold transition"
+            onClick={() => {
+              const coursesSection = document.getElementById("courses");
+              coursesSection?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             Explore Courses
           </button>
         </div>
